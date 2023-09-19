@@ -1,5 +1,20 @@
 function getDayOfTheWeek (year, month, day) {
     
+    const monthCodes = {
+        "January":1,
+        "February":4,
+        "March":4,
+        "April":0,
+        "May":2,
+        "June":5,
+        "July":0,
+        "August":3,
+        "September":6,
+        "October":1,
+        "November":4,
+        "December":6,
+    }
+
     const step1 = Math.floor((year % 100) / 12);
     console.log(step1);
 
@@ -9,27 +24,15 @@ function getDayOfTheWeek (year, month, day) {
     const step3 = Math.floor(step2 / 4);
     console.log(step3);
     
-    const step4 = day;
+    const step4 = parseInt(day);
     console.log(step4);
     
-    let monthCodes = {
-        "January": 1,
-        "February" : 4,
-        "March": 4,
-        "April": 0,
-        "May": 2,
-        "June": 5,
-        "July": 0,
-        "August":3,
-        "September":6,
-        "October":1,
-        "November":4,
-        "December":6,
-    }
     let step5 = monthCodes[month];
-    console.log (step5);
-
-     if(isLeapYear(year)){
+    
+    if ((month === "January" || month === "February") && isLeapYear(year)) {
+        step5 = (step5 - 1);
+    }
+    if (isLeapYear(year)){
             if (year >= 1600 && year < 1700) {
                 step5 = (step5 + 6);
             } else if (year >= 1700 && year < 1800) {
@@ -41,20 +44,20 @@ function getDayOfTheWeek (year, month, day) {
             } else if (year >= 2100) {
                 step5 = (step5 + 4);  
             }
-        }
-        
-    const step6 = ((step1 + step2 + step3 + step4 + step5) % 7); 
+        } console.log (step5);
+
+    let step6 = ((step1 + step2 + step3 + step4 + step5) % 7);
     const week = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+        return week[step6];
+    
     // const result = (week[step6]).substring(0, 3);
     // return result;
-    return (week[step6]);
 }
 
 
 function isLeapYear(year){
     return ((0 == year % 4) && (0 != year % 100) || (0 == year % 400));
 }
-
 
 function makeCalendar(year) {
     const monthList = {
@@ -76,7 +79,7 @@ function makeCalendar(year) {
         fullDay[1]= 29; //leap year 29days 
     }
     for (const [monthName, monthNum]of Object.entries(monthList)) {
-        for (let i = 1; i<fullDay[monthNum - 1]; i++) {
+        for (let i = 1; i<=fullDay[monthNum - 1]; i++) {
             //day = i start 1
            console.log (monthNum + "-" + i + "-" + year + "is a " + getDayOfTheWeek(year, monthName, i)); 
         }
