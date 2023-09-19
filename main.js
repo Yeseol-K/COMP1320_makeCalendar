@@ -6,6 +6,7 @@ const month = readline.question("Enter a month");
 const day = readline.question("Enter a day");
 
 console.log (getDayOfTheWeek(year, month, day));
+//console.log (makeCalendar(2019));
 
 
 

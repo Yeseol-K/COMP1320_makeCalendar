@@ -45,8 +45,9 @@ function getDayOfTheWeek (year, month, day) {
         
     const step6 = ((step1 + step2 + step3 + step4 + step5) % 7); 
     const week = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
-    const result = (week[step6]).substring(0, 3);
-    return (result); 
+    // const result = (week[step6]).substring(0, 3);
+    // return result;
+    return (week[step6]);
 }
 
 
@@ -70,14 +71,14 @@ function makeCalendar(year) {
         "November":11,
         "December":12,
     }
-    let fullDay = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    const fullDay = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
     if(isLeapYear(year)){
-        fullDay[1]= fullDay[1]+1; //leap year 29days 
+        fullDay[1]= 29; //leap year 29days 
     }
-    for (let [key, value]of Object.entries(monthList)) {
-        for (let i = 1; i<fullDay[i]-1; i++) {
+    for (const [monthName, monthNum]of Object.entries(monthList)) {
+        for (let i = 1; i<fullDay[monthNum - 1]; i++) {
             //day = i start 1
-           console.log (value + "-" + i + "-" + year + "is a " + getDayOfTheWeek(year, key, i)); 
+           console.log (monthNum + "-" + i + "-" + year + "is a " + getDayOfTheWeek(year, monthName, i)); 
         }
     } 
     
