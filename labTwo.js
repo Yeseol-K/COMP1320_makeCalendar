@@ -37,7 +37,7 @@ function getDayOfTheWeek (year, month, day) {
                 step5 = (step5 + 6);
             } else if (year >= 1700 && year < 1800) {
                 step5 = (step5 + 4);
-            } else if (year >= 1800 && year < 1900) {
+            } else if (year >= 1800 && year < 2000) {
                 step5 = (step5 + 2);
             } else if (year >= 2000 && year < 2100) {
                 step5 = (step5 + 6);
