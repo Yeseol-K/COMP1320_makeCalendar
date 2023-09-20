@@ -5,9 +5,9 @@ const year = readline.question("Enter a year");
 const month = readline.question("Enter a month");
 const day = readline.question("Enter a day");
 
-//getDayOfTheWeek(1992,"February", 29));
+//console.log(getDayOfTheWeek(1992,"February", 29));
 console.log(getDayOfTheWeek(year, month, day));
-makeCalendar(2019);
+//makeCalendar(2019);
 
 
 
